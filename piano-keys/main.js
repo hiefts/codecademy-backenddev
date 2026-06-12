@@ -17,8 +17,12 @@ const keyReturn = function(event) {
 
 // steps 3-5: assign events to keys
 let eventAssign = function(note) {
-  note.onmousedown = keyPlay();
-  note.onmouseup = keyReturn();
+  note.onmousedown = function() {
+    keyPlay(event);
+  };
+  note.onmouseup = function() {
+    keyReturn(event);
+  }
 };
 
 // step 6: Write a loop that runs the array elements through the function
@@ -42,7 +46,6 @@ startOver.hidden= true;
 nextOne.onclick = function() {
   nextTwo.hidden = false;
   nextOne.hidden = true;
-  
   document.getElementById('letter-note-five').innerHTML = 'D';
   document.getElementById('letter-note-six').innerHTML = 'C';
 };
@@ -51,11 +54,9 @@ nextOne.onclick = function() {
 nextTwo.onclick = function() {
   nextThree.hidden = false;
   nextTwo.hidden = true;
-
   document.getElementById('word-five').innerHTML = 'DEAR';
-  document.getElementById('word-five').innerHTML = 'FRI-';
+  document.getElementById('word-six').innerHTML = 'FRI-';
   lastLyric.style.display = 'inline-block';
-
   document.getElementById('letter-note-three').innerHTML = 'G';
   document.getElementById('letter-note-four').innerHTML = 'E';
   document.getElementById('letter-note-five').innerHTML = 'C';
@@ -66,14 +67,12 @@ nextTwo.onclick = function() {
 nextThree.onclick = function() {
   startOver.hidden = false;
   nextThree.hidden = true;
-
   document.getElementById('word-one').innerHTML = 'HAP-';
   document.getElementById('word-two').innerHTML = 'PY';
-  document.getElementById('word-three').innerHTML = 'BIRTH';
+  document.getElementById('word-three').innerHTML = 'BIRTH-';
   document.getElementById('word-four').innerHTML = 'DAY';
   document.getElementById('word-five').innerHTML = 'TO';
   document.getElementById('word-six').innerHTML = 'YOU!';
-
   document.getElementById('letter-note-one').innerHTML = 'F';
   document.getElementById('letter-note-two').innerHTML = 'F';
   document.getElementById('letter-note-three').innerHTML = 'E';
